@@ -19,10 +19,10 @@
         },
         computed: {
             array() {
-                return this.$store.state.aa.arr;
+                return this.$store.state.moduleA.arr;
             },
             arr3() {
-                return this.$store.state.ModuleB.arr;
+                return this.$store.state.moduleB.arr;
             },
             // ...mapState({
             //     arr: state => state.arr
@@ -33,6 +33,19 @@
         },
         mounted() {
           // console.log(store)
+          //   var arrArray = [1,2,3,4,1,3,2];
+          //   let hash = {};
+          //   let arr = arrArray.reduce((previousValue, currentValue) => {
+          //
+          //       if (!hash[currentValue]) {
+          //           hash[currentValue] = currentValue
+          //           previousValue.push(currentValue)
+          //       }
+          //
+          //       // hash[currentValue] ? '':  hash[currentValue] = true && previousValue.push(currentValue);
+          //       return previousValue
+          //   },[])
+          //   console.log(arr);
         },
         methods: {
             // ...mapMutations({
@@ -45,7 +58,7 @@
                 // this.addNumer([8,9]);
                 // this.add()
                 console.log(this.$store);
-                this.$store.commit('aa/changeArr', [6,7]);
+                this.$store.commit('moduleA/changeArr', [6,7]);
                 // 1. 如果你直接在这里调用接口
                 // 2.通过dispatch调用接口
                 // this.$http.get().then(res => {
