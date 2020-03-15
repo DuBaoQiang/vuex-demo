@@ -3,12 +3,12 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import store from './store/index'
 import './registerServiceWorker'
 import './assets/css/global.css'
-Vue.use(ElementUI);
 Vue.config.productionTip = false
 
+Vue.use(ElementUI);
 new Vue({
   router,
   store,

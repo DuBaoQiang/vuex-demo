@@ -1,12 +1,13 @@
 <template>
     <div class="index">
-        <h1>{{userInfo.name}}</h1>
-        <h1>{{userInfo.age}}</h1>
+        <h1>{{user.name}}</h1>
+        <h1>{{user.age}}</h1>
+        <h1>{{number}}</h1>
         <el-button @click="changeData">点击按钮</el-button>
     </div>
 </template>
 <script>
-    import {mapState} from 'vuex'
+
     export default {
         name: 'Index',
         data() {
@@ -17,29 +18,23 @@
         },
         computed:{
             user() {
-                return this.$store.state.info
+                console.log(this.$store.state);
+                return this.$store.state.ModuleA.infoA;
             },
-            ...mapState({
-                userInfo: state => state.info
-            })
+            number() {
+                return this.$store.getters.filters;
+            }
         },
         methods:{
             changeData() {
                 let params = {
-                    name: 'wanan',
-                    age: 27
+                    name: `wanan ${Date.now()}`,
+                    age: 27 + `---` + `${Date.now()}`
                 }
-                this.$store.commit('changeUserInfo', params)
+                this.$store.commit('changeUserInfoA', params)
             }
         },
-        watch: {
-            obj: {
-                deep: true,
-                immediate: true,
-                handler(newValue, oldValue) {
-
-                }
-            }
+        created() {
         }
     }
 </script>
