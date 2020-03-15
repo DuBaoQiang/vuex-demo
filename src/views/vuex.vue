@@ -1,40 +1,62 @@
 <template>
     <div class="index">
-        <h1>{{user.name}}</h1>
-        <h1>{{user.age}}</h1>
-        <h1>{{number}}</h1>
-        <el-button @click="changeData">点击按钮</el-button>
+        <p>原始的array{{array}}</p>
+        <p>data中的值{{arrData}}</p>
+        <p>Module B {{arr3}}</p>
+        <!--<p>大于三的值{{arr3}}</p>-->
+        <!--<p>{{$store.getters.num3}}</p>-->
+        <el-button @click="changeArr">点击改变</el-button>
     </div>
 </template>
 <script>
-
+    // import {mapGetters,mapMutations,mapActions,mapState} from 'vuex'
     export default {
         name: 'Index',
         data() {
             return{
-                msg: '12323',
-                obj: {}
+                arrData: 123
             }
         },
-        computed:{
-            user() {
-                console.log(this.$store.state);
-                return this.$store.state.ModuleA.infoA;
+        computed: {
+            array() {
+                return this.$store.state.aa.arr;
             },
-            number() {
-                return this.$store.getters.filters;
+            arr3() {
+                return this.$store.state.ModuleB.arr;
+            },
+            // ...mapState({
+            //     arr: state => state.arr
+            // }),
+            // ...mapGetters({
+            //     arr3: 'num3'
+            // })
+        },
+        mounted() {
+          // console.log(store)
+        },
+        methods: {
+            // ...mapMutations({
+            //     addNumer: 'changeArr'
+            // }),
+            // ...mapActions({
+            //     add: 'addSomeNumber'
+            // }),
+            changeArr() {
+                // this.addNumer([8,9]);
+                // this.add()
+                console.log(this.$store);
+                this.$store.commit('aa/changeArr', [6,7]);
+                // 1. 如果你直接在这里调用接口
+                // 2.通过dispatch调用接口
+                // this.$http.get().then(res => {
+                //     this.$store.commit();
+                // })
+
+                // this.$store.dispatch('addSomeNumber')
             }
         },
-        methods:{
-            changeData() {
-                let params = {
-                    name: `wanan ${Date.now()}`,
-                    age: 27 + `---` + `${Date.now()}`
-                }
-                this.$store.commit('changeUserInfoA', params)
-            }
-        },
-        created() {
+        watch: {
+
         }
     }
 </script>
