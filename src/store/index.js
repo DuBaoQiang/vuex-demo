@@ -11,6 +11,10 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+      changeUserInfo(state, payload) {
+        state.info.name = payload.name;
+        state.info.age = payload.age;
+      }
   },
   actions: {
   },
